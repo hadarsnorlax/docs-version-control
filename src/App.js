@@ -1,5 +1,11 @@
+import React from 'react';
+
 const App = () => {
-  return <h1> Documents Version Control </h1>;
+  return (
+    <div>
+      <h1> Documents Version Controls </h1>
+    </div>
+  );
 };
 
 export default App;
