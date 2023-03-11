@@ -1,9 +1,11 @@
 import React from 'react';
 
+import WritingPage from './pages/WritingPage';
+
 const App = () => {
   return (
     <div>
-      <h1> Documents Version Controls </h1>
+      <WritingPage />
     </div>
   );
 };
