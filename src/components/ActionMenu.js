@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import { Drawer, List } from '@mui/material';
 import {
   Home,
   FolderOpen,
@@ -16,29 +9,42 @@ import {
   Settings,
 } from '@mui/icons-material';
 
+import MenuIcon from './MenuIcon';
+
 const menuIcons = {
-  Home,
-  FolderOpen,
-  Commit,
-  Comment,
-  People,
-  Settings,
+  home: {
+    name: 'Home',
+    muiIcon: Home,
+  },
+  documents: {
+    name: 'Documents',
+    muiIcon: FolderOpen,
+  },
+  history: {
+    name: 'History',
+    muiIcon: Commit,
+  },
+  comments: {
+    name: 'Comments',
+    muiIcon: Comment,
+  },
+  people: {
+    name: 'Members',
+    muiIcon: People,
+  },
+  settings: {
+    name: 'Settings',
+    muiIcon: Settings,
+  },
 };
 
 const ActionMenu = () => {
   return (
     <Drawer anchor="left" variant="permanent">
       <List>
-        {menuIcons.map((icon) => (
-          <ListItem key={icon} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <Inbox /> : <Mail />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {Object.values(menuIcons).map((icon) => {
+          return <MenuIcon iconName={icon.name} muiIcon={icon.muiIcon} />;
+        })}
       </List>
     </Drawer>
   );
