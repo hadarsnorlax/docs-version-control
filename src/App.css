@@ -1,0 +1,19 @@
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.file-tree-container {
+  flex: 0 0 25%;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+.editor-container {
+  flex: 1;
+  padding: 20px;
+}
