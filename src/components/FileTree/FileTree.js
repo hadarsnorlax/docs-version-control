@@ -7,20 +7,33 @@ const FileTree = ({ data, onSelect }) => {
   const [treeData, setTreeData] = useState(data);
 
   const onToggle = (node, toggled) => {
-    const updatedNode = {
-      ...node,
-      active: true,
-      toggled: node.children ? toggled : node.toggled,
+    const updateNodesRecursively = (nodes) => {
+      return nodes.map((childNode) => {
+        if (childNode === node) {
+          return {
+            ...childNode,
+            active: true,
+            toggled: childNode.children ? toggled : childNode.toggled,
+          };
+        }
+        return {
+          ...childNode,
+          active: false,
+          children: childNode.children
+            ? updateNodesRecursively(childNode.children)
+            : childNode.children,
+        };
+      });
     };
 
-    if (treeData.active) {
-      treeData.active.active = false;
-    }
+    const updatedTreeData = {
+      ...treeData,
+      children: updateNodesRecursively(treeData.children),
+    };
 
-    setTreeData({ ...treeData });
-    onSelect(updatedNode);
+    setTreeData(updatedTreeData);
+    onSelect(node);
   };
-
   return (
     <div className="file-tree-container">
       <Treebeard data={treeData} onToggle={onToggle} />
