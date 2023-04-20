@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import AceEditor from 'react-ace';
-
 import 'ace-builds/src-noconflict/mode-plain_text';
-import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/theme-github';
+import './Editor.css';
+import PropTypes from 'prop-types';
 
-const Editor = ({ fileContent, onContentChange, onSave }) => {
-  const [content, setContent] = useState(fileContent || '');
-
-  useEffect(() => {
-    setContent(fileContent);
-  }, [fileContent]);
-
-  const handleSave = () => {
-    onSave(content);
+const Editor = ({ fileContent, onContentChange }) => {
+  const handleContentChange = (value) => {
+    onContentChange(value);
   };
 
   return (
-    <div className="editor-container">
+    <div className="editor-wrapper">
       <AceEditor
         mode="plain_text"
-        theme="monokai"
-        name="editor"
-        value={content}
-        onChange={onContentChange || setContent}
+        theme="github"
+        onChange={handleContentChange}
+        value={fileContent}
+        name="ace-editor"
+        className="ace-editor"
         fontSize={14}
         showPrintMargin={false}
         showGutter
@@ -31,14 +26,11 @@ const Editor = ({ fileContent, onContentChange, onSave }) => {
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
-          enableSnippets: true,
+          enableSnippets: false,
           showLineNumbers: true,
           tabSize: 2,
         }}
       />
-      <button type="button" onClick={handleSave}>
-        Save
-      </button>
     </div>
   );
 };
@@ -46,7 +38,6 @@ const Editor = ({ fileContent, onContentChange, onSave }) => {
 Editor.propTypes = {
   fileContent: PropTypes.string,
   onContentChange: PropTypes.func,
-  onSave: PropTypes.func.isRequired,
 };
 
 Editor.defaultProps = {
