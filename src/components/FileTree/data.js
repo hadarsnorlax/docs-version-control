@@ -1,10 +1,10 @@
 const fileTreeData = {
-  name: 'Root',
+  name: 'Project',
   toggled: true,
   children: [
     {
       name: 'Folder1',
-      children: [{ name: 'file1.txt' }, { name: 'file2.txt' }],
+      children: [{ name: 'SubFolder1', children: { name: 'file1.txt' } }],
     },
     {
       name: 'Folder2',
