@@ -1,4 +1,3 @@
-
 .file-tree-container {
   width: 100%;
   height: 100%;
@@ -10,7 +9,7 @@
 
 .file-tree-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 10px;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faFile,
+  faPlus,
   faFolderPlus,
   faMinusSquare,
 } from '@fortawesome/free-solid-svg-icons';
@@ -44,7 +44,7 @@ const FileTree = ({ data, onSelect }) => {
     <div className="file-tree-container">
       <div className="file-tree-actions">
         <button type="button" onClick={() => console.log('Create file')}>
-          <FontAwesomeIcon icon={faFile} />
+          <FontAwesomeIcon icon={faPlus} />
         </button>
         <button type="button" onClick={() => console.log('Create folder')}>
           <FontAwesomeIcon icon={faFolderPlus} />
