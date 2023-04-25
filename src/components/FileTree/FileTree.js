@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFile,
+  faFolderPlus,
+  faMinusSquare,
+} from '@fortawesome/free-solid-svg-icons';
 import { Treebeard } from 'react-treebeard';
 import './FileTree.css';
 import PropTypes from 'prop-types';
@@ -36,6 +42,20 @@ const FileTree = ({ data, onSelect }) => {
   };
   return (
     <div className="file-tree-container">
+      <div className="file-tree-actions">
+        <button type="button" onClick={() => console.log('Create file')}>
+          <FontAwesomeIcon icon={faFile} />
+        </button>
+        <button type="button" onClick={() => console.log('Create folder')}>
+          <FontAwesomeIcon icon={faFolderPlus} />
+        </button>
+        <button
+          type="button"
+          onClick={() => console.log('Minimize folder view')}
+        >
+          <FontAwesomeIcon icon={faMinusSquare} />
+        </button>
+      </div>
       <Treebeard data={treeData} onToggle={onToggle} />
     </div>
   );
